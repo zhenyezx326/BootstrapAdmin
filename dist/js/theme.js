@@ -100,7 +100,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * --------------------------------------------------------------------------
- * Dunwoo Admin (v1.0.0): theme.js
+ * Dunwoo Admin (v1.0.1): theme.js
  * Licensed under MIT (https://github.com/dwosc/dunwoo-admin/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
