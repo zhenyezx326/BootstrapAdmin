@@ -4,7 +4,7 @@ import '../scss/_theme.scss';
 
 /**
  * --------------------------------------------------------------------------
- * Dunwoo Admin (v1.0.1): theme.js
+ * Dunwoo Admin (v1.0.2): theme.js
  * Licensed under MIT (https://github.com/dwosc/dunwoo-admin/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
