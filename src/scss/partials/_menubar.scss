@@ -5,10 +5,6 @@
   border-right: 0;
   background: $menubar-bg;
   transition: margin-left .35s ease-in-out, left .35s ease-in-out;
-  
-  &.toggled {
-    margin-left: -$menubar-max-width;
-  }
 }
 
 .menubar-brand {
@@ -48,13 +44,13 @@
 }
 
 .menubar-link {
+  position: relative;
   display: flex;
   align-items: center;
   padding: .75rem 1.5rem;
   color: $menubar-color;
   font-weight: 400;
   transition: background .1s ease-in-out;
-  position: relative;
   text-decoration: none;
   cursor: pointer;
 
@@ -122,108 +118,72 @@
     padding: .625rem 1.5rem .625rem 4.5rem
 }
 
-// TODO
-
-.menubar [data-toggle=collapse] {
-    position: relative
-}
-
-.menubar [data-toggle=collapse]:before {
-    content: " ";
-    border: solid;
-    border-width: 0 .1rem .1rem 0;
-    display: inline-block;
-    padding: 2px;
-    transform: rotate(45deg);
-    position: absolute;
-    top: 1.2rem;
-    right: 1.5rem;
-    transition: all .2s ease-out
-}
-
-.menubar [aria-expanded=true]:before,
-.menubar [data-toggle=collapse]:not(.collapsed):before {
-    transform: rotate(-135deg);
-    top: 1.4rem
-}
-
-
-.menubar-bottom {
-    transition: margin-left .35s ease-in-out, left .35s ease-in-out;
-    padding: 1rem;
-    width: inherit;
-    font-size: .8rem;
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    background: #313b4c;
-    min-width: 256px;
-    max-width: 256px;
-    color: #e9ecef;
-    border-right: 0;
-    margin-left: 0
-}
-
-.menubar-bottom h5 {
-    color: #e9ecef
-}
-
-.menubar.toggled .menubar-bottom {
-    margin-left: -256px
-}
-
+// 菜单徽章
 .menubar-badge {
   position: absolute;
   right: 15px;
   top: 14px
 }
 
+.menubar {
+  // 有子菜单时显示一个向下的箭头
+  & [data-toggle=collapse] {
+    position: relative;
 
-
-@media (min-width:1px) and (max-width:991.98px) {
-    .menubar {
-        margin-left: -256px
+    &:before {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      display: inline-block;
+      padding: 2px;
+      border: solid;
+      border-width: 0 .1rem .1rem 0;
+      content: " ";
+      transform: rotate(45deg);
+      transition: all .2s ease-out;
     }
+  }
 
-    .menubar .menubar-content {
-        left: -256px
-    }
+  // 菜单项展开时箭头翻转
+  & [aria-expanded=true]:before,
+  & [data-toggle=collapse]:not(.collapsed):before {
+    transform: rotate(-135deg);
+    top: 1.4rem;
+  }
+} 
 
-    .menubar.toggled {
-        margin-left: 0
-    }
-
-    .menubar.toggled .menubar-content {
-        left: 0
-    }
-
-    .menubar-collapsed {
-        margin-left: 0
-    }
-
-    .menubar-collapsed .menubar-content {
-        left: 0
-    }
-
-    .menubar-collapsed.toggled {
-        margin-left: -256px
-    }
-
-    .menubar-collapsed.toggled .menubar-content {
-        left: -256px
-    }
-}
+// 固定侧边菜单
 .menubar-sticky {
   .menubar-content {
-    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    width: 256px;
+    width: $menubar-max-width;
+    height: 100vh;
     border-right: 0;
   }
 
   .menubar-nav {
     padding-bottom: 0;
+  }
+}
+
+.menubar.toggled {
+  margin-left: -$menubar-max-width;
+
+  .menubar-content {
+    left: -$menubar-max-width;
+  }
+}
+
+// 响应式 md 屏幕隐藏侧边菜单 
+// 屏幕小于等于 991.98px 时触发
+@include media-breakpoint-down(md) {
+  .menubar {
+    margin-left: -$menubar-max-width;
+
+    &.toggled {
+      margin-left: 0;
+    }
   }
 }

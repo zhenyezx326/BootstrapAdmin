@@ -82,10 +82,10 @@
 			</li>
 			<li class="menubar-item">
 				<a href="#charts" data-toggle="collapse" class="menubar-link collapsed">
-	        <i class="fe fe-pie-chart"></i> 图表<span class="small ml-1">Charts</span>
+	        <i class="fe fe-pie-chart"></i> 图表<span class="small ml-1">Charts</span><span class="menubar-badge badge badge-info">New</span>
 	      </a>
 				<ul id="charts" class="menubar-dropdown list-unstyled collapse " data-parent="#menubar">
-					<li class="menubar-item"><a class="menubar-link" href="#">Chart.js <span class="menubar-badge badge badge-primary">Feature</span></a></li>
+					<li class="menubar-item"><a class="menubar-link" href="charts-chartjs.html">Chart.js </a></li>
 				</ul>
 			</li>
 			<li class="menubar-item">
@@ -252,7 +252,7 @@
 					</li>
 					<li class="nav-item dropdown">
 						<a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-toggle="dropdown">
-	            <i class="align-middle fe fe-settings"></i>
+	            <i class="fe fe-settings"></i>
 	          </a>
 
 						<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
@@ -376,12 +376,14 @@
 					<div class="col-12 col-lg-8 d-flex">
 						<div class="card flex-fill w-100">
 							<div class="card-header">
-								<span class="badge badge-primary float-right">Feature</span>
+								<span class="badge badge-info float-right">New</span>
 								<h5 class="card-title mb-0">票房走势图</h5>
 							</div>
 							<div class="card-body">
-								<div class="chart chart-lg"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-									<canvas id="chartjs-dashboard-line" width="568" height="350" class="chartjs-render-monitor" style="display: block; width: 568px; height: 350px;"></canvas>
+								<div class="card-body">
+									<div class="chart chart-lg">
+										<canvas id="chartjs-line"></canvas>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -514,17 +516,62 @@
 <div class="back-to-top"><i class="fe fe-arrow-up"></i></div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="libs/jquery/jquery.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
 <!-- bootstrap.bundle.js 包含了 popper 内容. -->
 <script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<script src="libs/chart.js/chart.min.js"></script>
+
 <script src="js/theme.js"></script>
 
-<script type="text/javascript">
+<script>
 	$(function() {
-		
+		// Line chart
+		new Chart(document.getElementById("chartjs-line"), {
+			type: "line",
+			data: {
+				labels: ["7/26", "7/27", "7/28", "7/29", "7/30", "7/31", "8/1", "8/2", "8/3", "8/4", "8/5", "8/6", "8/7", "8/8", "8/9", "8/10", "8/11", "8/12"
+				         , "8/13", "8/14", "8/15", "8/16", "8/17", "8/18"],
+				datasets: [{
+					label: "票房 (万)",
+					fill: true,
+					backgroundColor: '#ebf2fd',
+					borderColor: "#2c7be5",
+					data: [12876.7, 21237.5, 26520.7, 17288.9, 17808.8, 18133.1, 16381.2, 18619.7, 31241.0, 31471.3, 15369.1, 14207.0,
+					       23097.1, 11274.2, 10377.0, 16743.4, 16527.1, 8235.4, 7249.8, 6462.9, 5698.8, 6372.1, 10292.7, 10147.0]
+				}]
+			},
+			options: {
+				maintainAspectRatio: false, // 响应式变化时，是否保持比例
+				legend: {
+					display: false // 不显示图例
+				},
+				tooltips: {
+					displayColors: false, // 提示工具内不显示颜色框
+					intersect: true // 是否只在鼠标位置与元素相交时显示
+				},
+				scales: {
+					xAxes: [{
+						reverse: true, // 反转标签顺序
+						gridLines: {
+							color: "rgba(0,0,0,0.05)" // 网格线的颜色
+						}
+					}],
+					yAxes: [{
+						ticks: {
+							stepSize: 5000, // 指定间隔值
+							beginAtZero: true // 从 0 开始
+						},
+						borderDash: [5, 5], // 虚线数据线每个小段的间隔长度
+						gridLines: {
+							color: "rgba(0,0,0,0)", // 网格线的颜色
+							fontColor: "#fff"
+						}
+					}]
+				}
+			}
+		});
 	});
-
 </script>
 
 </body>
