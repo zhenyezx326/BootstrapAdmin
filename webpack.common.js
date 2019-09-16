@@ -1,27 +1,12 @@
-// 引入 node 相关模块
-const path = require('path');
-const webpack = require('webpack');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
+
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: 'development',
-  devtool: 'source-map',
   entry: {
     theme: './src/js/theme.js'
-  },
-  output: {
-    path: path.resolve(__dirname, './dist/'),
-    filename: 'js/[name].js'
-  },
-  devServer: {
-    contentBase: './dist/',
-    host: '127.0.0.1',
-    port: 3000,
-    writeToDisk: true
   },
   module: {
     rules: [{
@@ -53,13 +38,5 @@ module.exports = {
       }]
     }]
   },
-  plugins: [
-    new CleanWebpackPlugin({
-      cleanOnceBeforeBuildPatterns:['js/*', 'css/*']
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: 'css/[id].css',
-    })
-  ]
+  plugins: [ ]
 }
