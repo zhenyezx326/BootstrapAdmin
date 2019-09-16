@@ -24,17 +24,24 @@ module.exports = {
         },
       }, {
         loader: 'css-loader', // translates CSS into CommonJS modules
+        options: {
+          sourceMap: true
+        }
+      }, {
+        loader: 'sass-loader', // compiles Sass to CSS
+        options: {
+          sourceMap: true
+        }
       }, {
         loader: 'postcss-loader', // Run postcss actions
         options: {
+          sourceMap: true,
           plugins: function () { // postcss plugins, can be exported to postcss.config.js
             return [
               require('autoprefixer')
             ];
           }
         }
-      }, {
-        loader: 'sass-loader' // compiles Sass to CSS
       }]
     }]
   },

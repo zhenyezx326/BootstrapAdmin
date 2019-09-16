@@ -24,12 +24,14 @@ module.exports = merge(common, {
     }),
     new MiniCssExtractPlugin({
       filename: 'css/[name].min.css',
+      chunkFilename: 'css/[id].min.css',
     })
   ],
   optimization: {
     minimizer: [
       new OptimizeCSSAssetsPlugin({
         cssProcessorOptions: {
+          sourceMap: true,
           map: {
             inline: false,   // 生成 source-map 文件
             annotation: true // 添加 source-map 路径注释
