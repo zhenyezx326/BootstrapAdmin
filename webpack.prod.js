@@ -13,7 +13,7 @@ const TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
-  devtool: 'cheap-module-eval-source-map', // 不生成 map 文件, map 信息在打包文件里
+  devtool: 'none', // 不生成 map 文件
   output: {
     path: path.resolve(__dirname, './dist/'),
     filename: 'js/[name].min.js'
@@ -29,19 +29,11 @@ module.exports = merge(common, {
   ],
   optimization: {
     minimizer: [
-      new OptimizeCSSAssetsPlugin({
-        cssProcessorOptions: {
-          sourceMap: true,
-          map: {
-            inline: false,   // 生成 source-map 文件
-            annotation: true // 添加 source-map 路径注释
-          }
-        }
-      }), // 这里要指定压缩 js
+      new OptimizeCSSAssetsPlugin(),
       new TerserJSPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true,
+        // sourceMap: true,
         terserOptions: {
           // https://github.com/webpack-contrib/terser-webpack-plugin#terseroptions
         }
