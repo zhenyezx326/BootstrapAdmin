@@ -24,14 +24,7 @@ module.exports = {
         },
       }, {
         loader: 'css-loader', // translates CSS into CommonJS modules
-        options: {
-          sourceMap: true
-        }
-      }, {
-        loader: 'sass-loader', // compiles Sass to CSS
-        options: {
-          sourceMap: true
-        }
+        options: { sourceMap: true }
       }, {
         loader: 'postcss-loader', // Run postcss actions
         options: {
@@ -42,6 +35,9 @@ module.exports = {
             ];
           }
         }
+      }, {
+        loader: 'sass-loader', // compiles Sass to CSS
+        options: { sourceMap: true }
       }]
     }]
   },
