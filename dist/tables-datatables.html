@@ -11,9 +11,9 @@
   <link rel="stylesheet" href="fonts/feather/feather.min.css">
 
   <!-- Theme CSS -->
-  <link rel="stylesheet" href="css/theme.min.css">
+  <link rel="stylesheet" href="css/theme.css">
 
-	<title>表单验证 - Validation - Dunwoo Admin - Bootstrap Template</title>
+  <title>数据表格 - DataTables - Dunwoo Admin - Bootstrap Template</title>
 
   <script>
     var _hmt = _hmt || [];
@@ -89,24 +89,24 @@
 					<li class="menubar-item"><a class="menubar-link" href="charts-chartjs.html">Chart.js</a></li>
 				</ul>
 			</li>
-			<li class="menubar-item active">
-				<a href="#forms" data-toggle="collapse" class="menubar-link">
+			<li class="menubar-item">
+				<a href="#forms" data-toggle="collapse" class="menubar-link collapsed">
 	        <i class="fe fe-check-square"></i> 表单<span class="small ml-1">Forms</span>
 	      </a>
-				<ul id="forms" class="menubar-dropdown list-unstyled collapse show" data-parent="#menubar">
+				<ul id="forms" class="menubar-dropdown list-unstyled collapse " data-parent="#menubar">
 					<li class="menubar-item"><a class="menubar-link align-items-end" href="forms-layouts.html">布局<span class="small ml-1">Layouts</span></a></li>
 					<li class="menubar-item"><a class="menubar-link align-items-end" href="forms-basic-elements.html">基本元素<span class="small ml-1">Basic</span></a></li>
 					<li class="menubar-item"><a class="menubar-link align-items-end" href="forms-input-groups.html">输入组<span class="small ml-1">Input Groups</span></a></li>
-					<li class="menubar-item active"><a class="menubar-link align-items-end" href="forms-validation.html">验证<span class="small ml-1">Validation</span></a></li>
+					<li class="menubar-item"><a class="menubar-link align-items-end" href="forms-validation.html">验证<span class="small ml-1">Validation</span></a></li>
 				</ul>
 			</li>
-			<li class="menubar-item">
-				<a href="#tables" data-toggle="collapse" class="menubar-link collapsed">
+			<li class="menubar-item active">
+				<a href="#tables" data-toggle="collapse" class="menubar-link">
 	        <i class="fe fe-list"></i> 表格<span class="small ml-1">Tables</span><span class="menubar-badge badge badge-info">New</span>
 	      </a>
-				<ul id="tables" class="menubar-dropdown list-unstyled collapse " data-parent="#menubar">
+				<ul id="tables" class="menubar-dropdown list-unstyled collapse show" data-parent="#menubar">
 					<li class="menubar-item"><a class="menubar-link" href="tables-bootstrap.html">Bootstrap</a></li>
-					<li class="menubar-item"><a class="menubar-link" href="tables-datatables.html">DataTables <span class="menubar-badge badge badge-info">New</span></a></li>
+					<li class="menubar-item active"><a class="menubar-link" href="tables-datatables.html">DataTables <span class="menubar-badge badge badge-info">New</span></a></li>
 				</ul>
 			</li>
 			<li class="menubar-item">
@@ -274,70 +274,278 @@
 		<main class="content">
 			<div class="container-fluid p-0">
 
-				<h1 class="h3 mb-3">表单验证 - Validation</h1>
+				<h1 class="h3 mb-3">数据表格 - DataTables</h1>
 
 				<div class="row">
 					<div class="col-12">
-
 						<div class="card">
-              <div class="card-body">
-                
-                <form>
-                  <div class="form-row">
-                    <div class="col-12 col-md-6 mb-3">
-                      <label for="validationServer01">用户名</label>
-                      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark" required="">
-                      <div class="valid-feedback">
-                        验证通过
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6 mb-3">
-                      <label for="validationServer02">密码</label>
-                      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto" required="">
-                      <div class="valid-feedback">
-                        验证通过
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-row">
-                    <div class="col-12 col-md-6 mb-3">
-                      <label for="validationServer03">邮箱</label>
-                      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required="">
-                      <div class="invalid-feedback">
-                        邮箱格式不正确
-                      </div>
-                    </div>
-                    <div class="col-12 col-md-6 mb-3">
-                      <label for="validationServer04">手机号</label>
-                      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required="">
-                      <div class="invalid-feedback">
-                        手机号格式不正确
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <div class="form-check">
-                      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required="">
-                      <label class="form-check-label" for="invalidCheck3">
-                        同意协议
-                      </label>
-                      <div class="invalid-feedback">
-                        提交之前您必须同意此协议
-                      </div>
-                    </div>
-                  </div>
-                  <button class="btn btn-primary" type="submit">注 册</button>
-                </form>
-
-              </div>
-            </div>
-
+							<div class="card-header">
+								<h5 class="card-title">基本表格</h5>
+								<h6 class="card-subtitle text-muted">可选择多个行，多次点击切换行是否选中的状态。</h6>
+								<h6 class="text-muted">更多示例请查看: <a target="_blank" href="https://datatables.net/examples/index">https://datatables.net/examples/index</a> </h6>
+							</div>
+							<div class="card-body">
+								<table id="datatables-multi" class="table table-striped" style="width:100%">
+									<thead>
+										<tr>
+											<th>影片</th>
+											<th>导演</th>
+											<th>类型</th>
+											<th>语言</th>
+											<th>上映时间</th>
+											<th>评分</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>肖申克的救赎</td>
+											<td>弗兰克·德拉邦特</td>
+											<td>剧情 / 犯罪</td>
+											<td>英语</td>
+											<td>1994-09-10</td>
+											<td>9.7</td>
+										</tr>
+										<tr>
+											<td>霸王别姬 (1993)</td>
+											<td>陈凯歌</td>
+											<td>剧情 / 爱情 / 同性</td>
+											<td>汉语普通话</td>
+											<td>1993-01-01</td>
+											<td>9.6</td>
+										</tr>
+										<tr>
+											<td>阿甘正传</td>
+											<td>罗伯特·泽米吉斯</td>
+											<td>剧情 / 爱情</td>
+											<td>英语</td>
+											<td>1994-06-23</td>
+											<td>9.5</td>
+										</tr>
+										<tr>
+											<td>这个杀手不太冷</td>
+											<td>吕克·贝松</td>
+											<td>剧情 / 动作 / 犯罪</td>
+											<td>英语 / 意大利语 / 法语</td>
+											<td>1994-09-14</td>
+											<td>9.4</td>
+										</tr>
+										<tr>
+											<td>美丽人生</td>
+											<td>罗伯托·贝尼尼</td>
+											<td>剧情 / 喜剧 / 爱情 / 战争</td>
+											<td>意大利语 / 德语 / 英语</td>
+											<td>1997-12-20</td>
+											<td>9.5</td>
+										</tr>
+										<tr>
+											<td>泰坦尼克号</td>
+											<td>詹姆斯·卡梅隆</td>
+											<td>剧情 / 爱情 / 灾难</td>
+											<td>英语 / 意大利语 / 德语 / 俄语</td>
+											<td>1998-04-03</td>
+											<td>9.4</td>
+										</tr>
+										<tr>
+											<td>千与千寻</td>
+											<td>宫崎骏</td>
+											<td>剧情 / 动画 / 奇幻</td>
+											<td>日语</td>
+											<td>2019-06-21</td>
+											<td>9.3</td>
+										</tr>
+										<tr>
+											<td>辛德勒的名单</td>
+											<td>史蒂文·斯皮尔伯格</td>
+											<td>剧情 / 历史 / 战争</td>
+											<td>英语 / 希伯来语 / 德语 / 波兰语</td>
+											<td>1993-11-30</td>
+											<td>9.5</td>
+										</tr>
+										<tr>
+											<td>盗梦空间</td>
+											<td>克里斯托弗·诺兰</td>
+											<td>剧情 / 科幻 / 悬疑 / 冒险</td>
+											<td>英语 / 日语 / 法语</td>
+											<td>2010-09-01</td>
+											<td>9.3</td>
+										</tr>
+										<tr>
+											<td>忠犬八公的故事</td>
+											<td>拉斯·霍尔斯道姆</td>
+											<td>剧情</td>
+											<td>英语 / 日语</td>
+											<td>2009-06-13</td>
+											<td>9.3</td>
+										</tr>
+										<tr>
+											<td>机器人总动员</td>
+											<td>安德鲁·斯坦顿</td>
+											<td>爱情 / 科幻 / 动画 / 冒险</td>
+											<td>英语</td>
+											<td>2008-06-27</td>
+											<td>9.3</td>
+										</tr>
+										<tr>
+											<td>三傻大闹宝莱坞</td>
+											<td>拉吉库马尔·希拉尼</td>
+											<td>剧情 / 喜剧 / 爱情 / 歌舞</td>
+											<td>印地语 / 乌尔都语 / 英语</td>
+											<td>2011-12-08</td>
+											<td>9.2</td>
+										</tr>
+										<tr>
+											<td>放牛班的春天</td>
+											<td>克里斯托夫·巴拉蒂</td>
+											<td>剧情 / 音乐</td>
+											<td>法语</td>
+											<td>2004-10-16</td>
+											<td>9.3</td>
+										</tr>
+										<tr>
+											<td>楚门的世界</td>
+											<td>彼得·威尔</td>
+											<td>剧情 / 科幻</td>
+											<td>英语</td>
+											<td>1998-06-05</td>
+											<td>9.2</td>
+										</tr>
+										<tr>
+											<td>星际穿越</td>
+											<td>克里斯托弗·诺兰</td>
+											<td>剧情 / 科幻 / 冒险</td>
+											<td>英语</td>
+											<td>2014-11-12</td>
+											<td>9.3</td>
+										</tr>
+										<tr>
+											<td>头号玩家</td>
+											<td>史蒂文·斯皮尔伯格</td>
+											<td>动作 / 科幻 / 冒险</td>
+											<td>英语 / 日语 / 汉语普通话</td>
+											<td>2018-03-30</td>
+											<td>8.7</td>
+										</tr>
+										<tr>
+											<td>哪吒之魔童降世</td>
+											<td>饺子</td>
+											<td>剧情 / 喜剧 / 动画 / 奇幻</td>
+											<td>汉语普通话</td>
+											<td>2019-07-26</td>
+											<td>8.6</td>
+										</tr>
+										<tr>
+											<td>我不是药神</td>
+											<td>文牧野</td>
+											<td>剧情 / 喜剧</td>
+											<td>汉语普通话 / 英语 / 上海话 / 印地语</td>
+											<td>2018-07-05</td>
+											<td>9.0</td>
+										</tr>
+										<tr>
+											<td>流浪地球</td>
+											<td>郭帆</td>
+											<td>科幻 / 灾难</td>
+											<td>汉语普通话 / 英语</td>
+											<td>2019-02-05</td>
+											<td>7.9</td>
+										</tr>
+										<tr>
+											<td>阿凡达</td>
+											<td>詹姆斯·卡梅隆</td>
+											<td>动作 / 科幻 / 战争 / 冒险</td>
+											<td>英语 / 西班牙语</td>
+											<td>2010-01-04</td>
+											<td>8.7</td>
+										</tr>
+										<tr>
+											<td>火星救援</td>
+											<td>雷德利·斯科特</td>
+											<td>剧情 / 科幻 / 冒险</td>
+											<td>英语 / 汉语普通话</td>
+											<td>2015-11-25</td>
+											<td>8.4</td>
+										</tr>
+										<tr>
+											<td>地心引力</td>
+											<td>阿方索·卡隆</td>
+											<td>科幻 / 惊悚 / 灾难</td>
+											<td>英语 / 格陵兰语</td>
+											<td>2013-11-19</td>
+											<td>7.9</td>
+										</tr>
+										<tr>
+											<td>钢铁侠</td>
+											<td>乔恩·费儒</td>
+											<td>动作 / 科幻 / 惊悚 / 冒险</td>
+											<td>英语 / 波斯语 / 乌尔都语 / 阿拉伯语</td>
+											<td>2008-04-30</td>
+											<td>8.2</td>
+										</tr>
+										<tr>
+											<td>变形金刚</td>
+											<td>迈克尔·贝</td>
+											<td>动作 / 科幻</td>
+											<td>英语 / 西班牙语</td>
+											<td>2007-07-11</td>
+											<td>8.2</td>
+										</tr>
+										<tr>
+											<td>命运规划局</td>
+											<td>乔治·诺非</td>
+											<td>爱情 / 科幻</td>
+											<td>英语</td>
+											<td>2011-02-26</td>
+											<td>6.9</td>
+										</tr>
+										<tr>
+											<td>疯狂动物城</td>
+											<td>拜伦·霍华德</td>
+											<td>喜剧 / 动画 / 冒险</td>
+											<td>英语 / 挪威语</td>
+											<td>2016-03-04</td>
+											<td>9.2</td>
+										</tr>
+										<tr>
+											<td>喜剧之王</td>
+											<td>周星驰</td>
+											<td>剧情 / 喜剧 / 爱情</td>
+											<td>粤语</td>
+											<td>1999-02-13</td>
+											<td>8.7</td>
+										</tr>
+										<tr>
+											<td>驯龙高手</td>
+											<td>迪恩·德布洛斯</td>
+											<td>动画 / 奇幻 / 冒险</td>
+											<td>英语</td>
+											<td>2010-05-14</td>
+											<td>8.7</td>
+										</tr>
+										<tr>
+											<td>摔跤吧！爸爸</td>
+											<td>涅提·蒂瓦里</td>
+											<td>剧情 / 家庭 / 传记 / 运动</td>
+											<td>印地语</td>
+											<td>2017-05-05</td>
+											<td>9.0</td>
+										</tr>
+										<tr>
+											<td>鬼子来了</td>
+											<td>姜文</td>
+											<td>剧情 / 历史 / 战争</td>
+											<td>汉语普通话 / 日语 / 唐山话</td>
+											<td>2000-05-12</td>
+											<td>9.2</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
 				</div>
 
 			</div>
 		</main>
-		
 		<footer class="footer">
 			<div class="container-fluid">
 				<div class="row text-muted">
@@ -368,14 +576,29 @@
 
 <div class="back-to-top"><i class="fe fe-arrow-up"></i></div>
 
-
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="libs/jquery/jquery.min.js"></script>
 <!-- bootstrap.bundle.js 包含了 popper 内容. -->
 <script src="libs/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+<script src="libs/datatables/datatables.min.js"></script>
+
 <script src="js/theme.min.js"></script>
 
+<script>
+	$(function() {
+		// Datatables with Multiselect
+		var datatablesMulti = $("#datatables-multi").DataTable({
+			language: { // ajax 获取语言文件
+				"url": "libs/datatables/Chinese.json"
+      },
+      // searching: false, // 禁用搜索
+			select: {
+				style: "multi"
+			}
+		});
+	});
+</script>
 
 </body>
 
