@@ -12,16 +12,16 @@ $gray-100: #f8f9fa;
 $gray-600: #95aac9;
 $gray-800: #3b506c;
 
-$blue:    #2c7be5;
-$indigo:  #727cf5;
-$purple:  #6b5eae;
-$pink:    #ff679b;
-$red:     #e63757;
-$orange:  #fd7e14;
-$yellow:  #f6c343;
-$green:   #00d97e;
-$teal:    #02a8b5;
-$cyan:    #39afd1;
+$blue:     #2c7be5;
+$indigo:   #727cf5;
+$purple:   #6b5eae;
+$pink:     #ff679b;
+$red:      #e63757;
+$orange:   #fd7e14;
+$yellow:   #f6c343;
+$green:    #00d97e;
+$teal:     #02a8b5;
+$cyan:     #39afd1;
 
 
 $theme-colors: (
@@ -95,13 +95,27 @@ $display2-size:           3.25rem;
 $display3-size:           2.625rem;
 $display4-size:           2rem;
 
-$text-muted: 						  #6c757d;
+$text-muted:              #6c757d;
+
+
+// Buttons + Forms
+//
+// For each of Bootstrap's buttons, define text, background, and border color.
+
+$input-btn-padding-y:      .25rem;
+$input-btn-padding-x:      .7rem;
+
+$input-focus-border-color: $blue;
+
+
+$input-btn-padding-y-lg:   .35rem;
+
 
 // Cards
 //
 $card-border-color:       $gray-100;
 
-$card-cap-bg:	            transparent;
+$card-cap-bg:             transparent;
 
 
 // Badges
@@ -122,28 +136,6 @@ $alert-border-level:       0;
 $alert-color-level:        -12.5;
 
 
-// Close
-
-$close-text-shadow:        none;
-
-
-// Buttons + Forms
-//
-// For each of Bootstrap's buttons, define text, background, and border color.
-
-$input-btn-padding-y:      .25rem;
-$input-btn-padding-x:      .7rem;
-
-$input-focus-border-color: $blue;
-
-$input-btn-focus-box-shadow:  none;
-
-$input-btn-padding-y-lg:   .35rem;
-
-// Forms
-// 
-// $custom-select-focus-box-shadow:    none;
-
 // Pagination
 // 
 $pagination-padding-y:     .3rem;
@@ -151,3 +143,31 @@ $pagination-color:         #6c757d;
 
 
 $input-group-addon-bg: #fff;
+
+
+
+
+// 去掉所有阴影 $enable-shadows 不能控制全部
+// 
+$kbd-box-shadow:                         none;
+$input-btn-focus-box-shadow:             none;
+$btn-box-shadow:                         none;
+// $btn-focus-box-shadow:                   $input-btn-focus-box-shadow;
+$btn-active-box-shadow:                  none;
+$input-box-shadow:                       none;
+$custom-select-box-shadow:               none;
+$custom-select-focus-box-shadow:         none;
+$custom-range-track-box-shadow:          none;
+$custom-range-thumb-box-shadow:          none;
+$custom-range-thumb-focus-box-shadow:    none;
+// $custom-file-focus-box-shadow:           $input-focus-box-shadow;
+// $custom-file-box-shadow:                 $input-box-shadow;
+$dropdown-box-shadow:                    none;
+// $pagination-focus-box-shadow:            $input-btn-focus-box-shadow;
+$popover-box-shadow:                     none;
+$toast-box-shadow:                       none;
+// $modal-content-box-shadow-xs:            0 .25rem .5rem rgba($black, .5) !default;
+// $modal-content-box-shadow-sm-up:         0 .5rem 1rem rgba($black, .5) !default;
+$progress-box-shadow:                    none;
+$thumbnail-box-shadow:                   none;
+$close-text-shadow:                      none;
