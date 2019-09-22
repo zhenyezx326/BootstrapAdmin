@@ -1,0 +1,29 @@
+//
+// 响应式设计
+//
+
+// menubar - 屏幕小于等于 991.98px 时隐藏
+// 
+// media-breakpoint-down by bootstrap\scss\mixins\_breakpoints.scss
+//   @media (max-width: 991.98px) { ... }
+//   max-width 屏幕宽度小于等于指定尺寸时的样式
+// 
+@include media-breakpoint-down(md) {
+  .menubar {
+    margin-left: -$menubar-width;
+
+    &.toggled {
+      margin-left: 0;
+
+      .menubar-close {
+        left: 235px;
+      }
+    }
+  }
+
+  .main {
+    margin-left: 0;
+  }
+}
+
+

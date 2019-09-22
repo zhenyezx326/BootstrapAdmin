@@ -33,14 +33,87 @@ button:focus {
 
 .main {
   width: 100%;
-  min-height: 100vh; // 没有内容时元素高度会撑开与屏幕一致
   min-width: 0;
-  transition: margin-left .35s ease-in-out, left .35s ease-in-out;
+  min-height: 100vh; // 没有内容时元素高度会撑开与屏幕一致
+  margin-left: $menubar-width;
+  transition: margin-left .35s ease-in-out;
 }
+
+.main.toggled {
+    margin-left: 0px;
+  }
 
 // 手机屏幕
 @include media-breakpoint-down(sm) {
   .content {
       padding: 1rem;
   }
+}
+
+
+// x 轴滚动条
+// 
+.ps > .ps__rail-x {
+  height: 4px;
+  background: transparent;
+
+  & > .ps__thumb-x {
+    top: 0;
+    height: 4px;
+    border-radius: 4px;
+    background: #d8dce6;
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus {
+    height: 4px;
+    opacity: 1;
+    background: transparent !important;
+
+    & > .ps__thumb-x {
+      top: 0;
+      height: 4px;
+      opacity: 1;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+        background: #d8dce6;
+      }
+    } // end .ps__thumb-x
+
+  } // end hover|focus
+}
+
+// y 轴滚动条
+// 
+.ps > .ps__rail-y {
+  width: 4px;
+  background: transparent;
+
+  & > .ps__thumb-y {
+    width: 4px;
+    border-radius: 4px;
+    background: #d8dce6;
+    opacity: 1;
+  }
+
+  &:hover,
+  &:focus {
+    background: transparent !important;
+    opacity: 1;
+
+    & > .ps__thumb-y {
+      width: 4px;
+      opacity: 1;
+
+      &:hover,
+      &:focus {
+        opacity: 1;
+        background: #d8dce6;
+      }
+    } // end .ps__thumb-y
+
+  } // end hover|focus
 }

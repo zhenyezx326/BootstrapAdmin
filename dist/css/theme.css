@@ -7512,20 +7512,72 @@ button:focus {
 
 .main {
   width: 100%;
-  min-height: 100vh;
   min-width: 0;
-  transition: margin-left .35s ease-in-out, left .35s ease-in-out; }
+  min-height: 100vh;
+  margin-left: 256px;
+  transition: margin-left .35s ease-in-out; }
+
+.main.toggled {
+  margin-left: 0px; }
 
 @media (max-width: 767.98px) {
   .content {
     padding: 1rem; } }
+
+.ps > .ps__rail-x {
+  height: 4px;
+  background: transparent; }
+  .ps > .ps__rail-x > .ps__thumb-x {
+    top: 0;
+    height: 4px;
+    border-radius: 4px;
+    background: #d8dce6;
+    opacity: 1; }
+  .ps > .ps__rail-x:hover, .ps > .ps__rail-x:focus {
+    height: 4px;
+    opacity: 1;
+    background: transparent !important; }
+    .ps > .ps__rail-x:hover > .ps__thumb-x, .ps > .ps__rail-x:focus > .ps__thumb-x {
+      top: 0;
+      height: 4px;
+      opacity: 1; }
+      .ps > .ps__rail-x:hover > .ps__thumb-x:hover, .ps > .ps__rail-x:hover > .ps__thumb-x:focus, .ps > .ps__rail-x:focus > .ps__thumb-x:hover, .ps > .ps__rail-x:focus > .ps__thumb-x:focus {
+        opacity: 1;
+        background: #d8dce6; }
+
+.ps > .ps__rail-y {
+  width: 4px;
+  background: transparent; }
+  .ps > .ps__rail-y > .ps__thumb-y {
+    width: 4px;
+    border-radius: 4px;
+    background: #d8dce6;
+    opacity: 1; }
+  .ps > .ps__rail-y:hover, .ps > .ps__rail-y:focus {
+    background: transparent !important;
+    opacity: 1; }
+    .ps > .ps__rail-y:hover > .ps__thumb-y, .ps > .ps__rail-y:focus > .ps__thumb-y {
+      width: 4px;
+      opacity: 1; }
+      .ps > .ps__rail-y:hover > .ps__thumb-y:hover, .ps > .ps__rail-y:hover > .ps__thumb-y:focus, .ps > .ps__rail-y:focus > .ps__thumb-y:hover, .ps > .ps__rail-y:focus > .ps__thumb-y:focus {
+        opacity: 1;
+        background: #d8dce6; }
 
 .menubar {
   min-width: 256px;
   max-width: 256px;
   border-right: 0;
   background: #354052;
-  transition: margin-left .35s ease-in-out, left .35s ease-in-out; }
+  transition: margin-left .35s ease-in-out; }
+  .menubar.menubar-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 98; }
+  .menubar .menubar-content {
+    position: relative;
+    height: 95%; }
 
 .menubar-brand {
   display: block;
@@ -7541,6 +7593,18 @@ button:focus {
   .menubar-brand i {
     color: #2c7be5;
     font-size: 1.5rem; }
+
+.menubar-close {
+  position: fixed;
+  top: 3px;
+  left: -20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: left .35s ease-in-out; }
+  .menubar-close i {
+    color: #ced4da; }
 
 .menubar-nav {
   padding-bottom: 3.5rem;
@@ -7628,27 +7692,8 @@ button:focus {
           transform: rotate(-135deg);
   top: 1.4rem; }
 
-.menubar-sticky .menubar-content {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 256px;
-  height: 100vh;
-  border-right: 0; }
-
-.menubar-sticky .menubar-nav {
-  padding-bottom: 0; }
-
 .menubar.toggled {
   margin-left: -256px; }
-  .menubar.toggled .menubar-content {
-    left: -256px; }
-
-@media (max-width: 991.98px) {
-  .menubar {
-    margin-left: -256px; }
-    .menubar.toggled {
-      margin-left: 0; } }
 
 .navbar {
   position: relative;
@@ -7952,6 +7997,16 @@ blockquote {
   left: 0;
   width: 20px;
   height: 20px; }
+
+@media (max-width: 991.98px) {
+  .menubar {
+    margin-left: -256px; }
+    .menubar.toggled {
+      margin-left: 0; }
+      .menubar.toggled .menubar-close {
+        left: 235px; }
+  .main {
+    margin-left: 0; } }
 
 .settings {
   display: none; }
@@ -8573,6 +8628,109 @@ table.dataTable tbody tr.selected a,
 table.dataTable tbody th.selected a,
 table.dataTable tbody td.selected a {
   color: #a2d4ed; }
+
+/*
+ * Container style
+ */
+.ps {
+  overflow: hidden !important;
+  overflow-anchor: none;
+  -ms-overflow-style: none;
+  touch-action: auto;
+  -ms-touch-action: auto; }
+
+/*
+ * Scrollbar rail styles
+ */
+.ps__rail-x {
+  display: none;
+  opacity: 0;
+  transition: background-color .2s linear, opacity .2s linear;
+  -webkit-transition: background-color .2s linear, opacity .2s linear;
+  height: 15px;
+  /* there must be 'bottom' or 'top' for ps__rail-x */
+  bottom: 0px;
+  /* please don't change 'position' */
+  position: absolute; }
+
+.ps__rail-y {
+  display: none;
+  opacity: 0;
+  transition: background-color .2s linear, opacity .2s linear;
+  -webkit-transition: background-color .2s linear, opacity .2s linear;
+  width: 15px;
+  /* there must be 'right' or 'left' for ps__rail-y */
+  right: 0;
+  /* please don't change 'position' */
+  position: absolute; }
+
+.ps--active-x > .ps__rail-x,
+.ps--active-y > .ps__rail-y {
+  display: block;
+  background-color: transparent; }
+
+.ps:hover > .ps__rail-x,
+.ps:hover > .ps__rail-y,
+.ps--focus > .ps__rail-x,
+.ps--focus > .ps__rail-y,
+.ps--scrolling-x > .ps__rail-x,
+.ps--scrolling-y > .ps__rail-y {
+  opacity: 0.6; }
+
+.ps .ps__rail-x:hover,
+.ps .ps__rail-y:hover,
+.ps .ps__rail-x:focus,
+.ps .ps__rail-y:focus,
+.ps .ps__rail-x.ps--clicking,
+.ps .ps__rail-y.ps--clicking {
+  background-color: #eee;
+  opacity: 0.9; }
+
+/*
+ * Scrollbar thumb styles
+ */
+.ps__thumb-x {
+  background-color: #aaa;
+  border-radius: 6px;
+  transition: background-color .2s linear, height .2s ease-in-out;
+  -webkit-transition: background-color .2s linear, height .2s ease-in-out;
+  height: 6px;
+  /* there must be 'bottom' for ps__thumb-x */
+  bottom: 2px;
+  /* please don't change 'position' */
+  position: absolute; }
+
+.ps__thumb-y {
+  background-color: #aaa;
+  border-radius: 6px;
+  transition: background-color .2s linear, width .2s ease-in-out;
+  -webkit-transition: background-color .2s linear, width .2s ease-in-out;
+  width: 6px;
+  /* there must be 'right' for ps__thumb-y */
+  right: 2px;
+  /* please don't change 'position' */
+  position: absolute; }
+
+.ps__rail-x:hover > .ps__thumb-x,
+.ps__rail-x:focus > .ps__thumb-x,
+.ps__rail-x.ps--clicking .ps__thumb-x {
+  background-color: #999;
+  height: 11px; }
+
+.ps__rail-y:hover > .ps__thumb-y,
+.ps__rail-y:focus > .ps__thumb-y,
+.ps__rail-y.ps--clicking .ps__thumb-y {
+  background-color: #999;
+  width: 11px; }
+
+/* MS supports */
+@supports (-ms-overflow-style: none) {
+  .ps {
+    overflow: auto !important; } }
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .ps {
+    overflow: auto !important; } }
 
 
 /*# sourceMappingURL=theme.css.map*/

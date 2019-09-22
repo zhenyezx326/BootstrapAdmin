@@ -6,6 +6,8 @@
 /vendor/
 /.ruby-version
 
+*.LICENSE
+
 # Numerous always-ignore extensions
 *.diff
 *.err
